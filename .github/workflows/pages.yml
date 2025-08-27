@@ -19,18 +19,17 @@ jobs:
       - name: Setup Ruby
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: '3.2.4'
-          bundler-version: '2.5.6'
-          bundler-cache: true
+          ruby-version: '3.2'  # 使用3.2系列
+          bundler-cache: true  # 启用bundler缓存
       
-      - name: Install webrick and dependencies
-        run: |
-          gem install webrick -v 1.8.1
-          bundle _2.5.6_ install --retry=3
+      - name: Install specific Bundler version
+        run: gem install bundler -v 2.5.6
+      
+      - name: Install dependencies
+        run: bundle _2.5.6_ install --retry=3
       
       - name: Build with Jekyll
-        run: |
-          bundle _2.5.6_ exec jekyll build --destination ./_site --verbose
+        run: bundle _2.5.6_ exec jekyll build --destination ./_site --verbose
       
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
