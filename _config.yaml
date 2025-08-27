@@ -45,9 +45,6 @@ defaults:
     values:
       layout: post
 
-url: "https://jiye022.github.io"
-baseurl: "/Zhourl_lab.github.io"
-
 collections:
   # generate page for each member
   members:
@@ -58,8 +55,6 @@ collections:
     output: true
 
 # jekyll plugins
-baseurl: ""
-theme: null
 plugins:
   - jekyll-spaceship
   - jekyll-sitemap
