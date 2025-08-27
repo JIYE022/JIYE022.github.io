@@ -1,9 +1,10 @@
 ---
 title: "HOME"
+layout: default
 lang: en
 nav:
   order: 1
-permalink: /en/
+permalink: /
 ---
 
 # Zhourl Group
