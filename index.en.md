@@ -3,7 +3,7 @@ title: "HOME"
 lang: en
 nav:
   order: 1
-permalink: /
+permalink: /en/
 ---
 
 # Zhourl Group

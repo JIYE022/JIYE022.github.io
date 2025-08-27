@@ -55,6 +55,8 @@ collections:
     output: true
 
 # jekyll plugins
+baseurl: ""
+theme: null
 plugins:
   - jekyll-spaceship
   - jekyll-sitemap
