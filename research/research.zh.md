@@ -17,7 +17,7 @@ permalink: /zh/research/
 
 ## 重点论文
 
-{% include citation.html lookup="2 μm soliton lasers in a bidirectional nonlinear polarization evolution Tm3+-doped fiber oscillator" style="rich" %}
+{% include citation.html lookup="Scalable data harmonization for single-cell image-based profiling with CytoTable" style="rich" %}
 
 {% include section.html %}
 
