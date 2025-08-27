@@ -45,6 +45,9 @@ defaults:
     values:
       layout: post
 
+url: "https://jiye022.github.io"
+baseurl: "/Zhourl_lab.github.io"
+
 collections:
   # generate page for each member
   members:
