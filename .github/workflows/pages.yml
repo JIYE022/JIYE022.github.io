@@ -9,6 +9,10 @@ permissions:
   pages: write
   id-token: write
 
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -17,56 +21,44 @@ jobs:
         uses: actions/checkout@v4
       
       - name: Setup Ruby
-        uses: actions/setup-ruby@v1
+        uses: ruby/setup-ruby@v1
         with:
-          ruby-version: '3.2'
-          bundler-cache: true
+          ruby-version: '3.2'  # 使用3.2版本
+          bundler-cache: true  # 自动缓存bundler
       
-      - name: Debug info
+      - name: Debug information
         run: |
-          echo "Ruby version:"
-          ruby --version
-          echo "Bundler version:"
-          bundle --version
+          echo "Ruby version: $(ruby --version)"
+          echo "Bundler version: $(bundle --version)"
           echo "Gemfile content:"
           cat Gemfile
-          echo "Gemfile.lock content:"
-          head -20 Gemfile.lock
+          echo "---"
       
-      - name: Install dependencies with debug
+      - name: Install dependencies
+        run: bundle install
+      
+      - name: Verify Jekyll installation
         run: |
-          bundle install --verbose
-          echo "Installed gems:"
-          bundle list
-          echo "Jekyll executable available:"
-          bundle exec which jekyll || echo "Jekyll not found in bundle"
+          bundle show jekyll
+          bundle exec jekyll --version
       
       - name: Build with Jekyll
-        run: |
-          # 确保jekyll可执行文件存在
-          if bundle exec which jekyll; then
-            bundle exec jekyll build --destination ./_site --trace
-            echo "Build successful"
-            ls -la _site/
-          else
-            echo "ERROR: jekyll executable not found"
-            exit 1
-          fi
+        run: bundle exec jekyll build -d _site --trace
+      
+      - name: List built files
+        run: ls -la _site/
       
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ./_site
+          path: _site
 
   deploy:
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
-    
     runs-on: ubuntu-latest
     needs: build
-    
     steps:
       - name: Deploy to GitHub Pages
-        id: deployment
         uses: actions/deploy-pages@v4
