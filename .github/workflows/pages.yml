@@ -20,24 +20,39 @@ jobs:
         uses: actions/setup-ruby@v1
         with:
           ruby-version: '3.2'
-          bundler-cache: true  # 让action自动处理bundler
+          bundler-cache: true
       
       - name: Debug info
         run: |
+          echo "Ruby version:"
           ruby --version
-          which bundle
+          echo "Bundler version:"
           bundle --version
-          bundle env
+          echo "Gemfile content:"
+          cat Gemfile
+          echo "Gemfile.lock content:"
+          head -20 Gemfile.lock
+      
+      - name: Install dependencies with debug
+        run: |
+          bundle install --verbose
+          echo "Installed gems:"
+          bundle list
+          echo "Jekyll executable available:"
+          bundle exec which jekyll || echo "Jekyll not found in bundle"
       
       - name: Build with Jekyll
         run: |
-          # 使用bundle exec来确保使用项目内的gem
-          bundle exec jekyll build --destination ./_site --trace
-          
-          # 检查构建结果
-          echo "Build completed. Files in _site:"
-          ls -la _site/
-          
+          # 确保jekyll可执行文件存在
+          if bundle exec which jekyll; then
+            bundle exec jekyll build --destination ./_site --trace
+            echo "Build successful"
+            ls -la _site/
+          else
+            echo "ERROR: jekyll executable not found"
+            exit 1
+          fi
+      
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
