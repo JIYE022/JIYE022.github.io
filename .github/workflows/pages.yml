@@ -13,32 +13,45 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout
+        uses: actions/checkout@v4
       
-      - name: Setup Ruby and Bundler
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y ruby-full build-essential
-          gem install bundler
+      - name: Setup Ruby
+        uses: actions/setup-ruby@v1
+        with:
+          ruby-version: '3.2'
+          bundler-cache: true  # 让action自动处理bundler
       
-      - name: Install dependencies
+      - name: Debug info
         run: |
-          bundle install --retry=3
+          ruby --version
+          which bundle
+          bundle --version
+          bundle env
       
       - name: Build with Jekyll
         run: |
-          bundle exec jekyll build -d _site
+          # 使用bundle exec来确保使用项目内的gem
+          bundle exec jekyll build --destination ./_site --trace
+          
+          # 检查构建结果
           echo "Build completed. Files in _site:"
           ls -la _site/
-      
-      - uses: actions/upload-pages-artifact@v3
+          
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
         with:
-          path: _site
+          path: ./_site
 
   deploy:
     environment:
       name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    
     runs-on: ubuntu-latest
     needs: build
+    
     steps:
-      - uses: actions/deploy-pages@v4
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
