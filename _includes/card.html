@@ -1,0 +1,52 @@
+{{ " " }}
+{% assign lang = page.lang | default: site.lang | default: "en" %}
+
+<div class="card" data-style="{{ include.style }}">
+  <a
+    {% if include.link %}
+      href="{{ include.link | relative_url | uri_escape }}"
+    {% endif %}
+    aria-label="{{ include.title[lang] | default: include.title | default: "card link" | regex_strip }}"
+    class="card-image"
+  >
+    <img
+      src="{{ include.image | relative_url | uri_escape }}"
+      alt="{{ include.title[lang] | default: include.title | default: "card image" | regex_strip }}"
+      loading="lazy"
+      {% include fallback.html %}
+    >
+  </a>
+
+  <div class="card-text">
+    {% if include.title %}
+      {% assign title_text = include.title[lang] | default: include.title %}
+      <a
+        {% if include.link %}
+          href="{{ include.link | relative_url | uri_escape }}"
+        {% endif %}
+        {% if include.tooltip %}
+          data-tooltip="{{ include.tooltip | xml_escape }}"
+        {% endif %}
+        class="card-title"
+      >
+        {{ title_text }}
+      </a>
+    {% endif %}
+
+    {% if include.subtitle %}
+      {% assign subtitle_text = include.subtitle[lang] | default: include.subtitle %}
+      <span class="card-subtitle">{{ subtitle_text }}</span>
+    {% endif %}
+
+    {% if include.description %}
+      {% assign desc_text = include.description[lang] | default: include.description %}
+      <p>
+        {{ desc_text | markdownify | remove: "<p>" | remove: "</p>" }}
+      </p>
+    {% endif %}
+
+    {% if include.tags or include.repo %}
+      {% include tags.html tags=include.tags repo=include.repo %}
+    {% endif %}
+  </div>
+</div>

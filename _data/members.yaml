@@ -1,0 +1,18 @@
+- slug: Renlai Zhou
+  name: Renlai Zhou
+  role: principal-investigator
+  image: images/Zhou_rl.jpg
+  
+    
+- name: Wenbin Luo
+  role: phd-student
+  image: /images/bob.jpg
+  slug: Wenbin Luo
+  description: Works on nonlinear pulse dynamics.
+
+- name: Huiting Tang
+  role: master
+  image: /images/bob.jpg
+  slug: Huiting Tang
+  description: Works on nonlinear pulse dynamics.
+

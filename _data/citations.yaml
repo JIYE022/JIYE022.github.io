@@ -1,0 +1,58 @@
+# DO NOT EDIT, GENERATED AUTOMATICALLY
+
+- id: doi:10.1016/j.rinp.2022.105930 
+  title: "2 μm soliton lasers in a bidirectional nonlinear polarization evolution Tm3+-doped fiber oscillator"
+  image: "/images/background1.jpg"
+  authors:
+  - Ni Feng
+  - Hui Hu
+  - Renlai Zhou
+  - Encai
+  - Xiaoxi Liu
+  - Hongcan Gu
+  - K.Nakkeeran
+  publisher: Results In Physics
+  date: '2022-10-12'
+  link: https://www.sciencedirect.com/science/article/pii/S2211379722005538?via%3Dihub
+  plugin: orcid.py
+  file: orcid.yaml
+- id: doi:10.1101/2023.10.11.560955
+  title: Commensalism of quasi-coherent noise-like and conventional soliton pulse in a simplified NPE mode-locked fiber laser
+  image: "/images/background1.jpg"
+  authors:
+  - Renlai Zhou et al
+  publisher: Optical Communications and Networks
+  date: '2021-5-1'
+  link: https://doi.org/gsvf5z
+  plugin: orcid.py
+  file: orcid.yaml
+- id: doi:10.1101/2023.10.11.560955
+  title: Commensalism of quasi-coherent noise-like and conventional soliton pulse in a simplified NPE mode-locked fiber laser
+  image: "/images/background1.jpg"
+  authors:
+  - Renlai Zhou et al
+  publisher: Optical Communications and Networks
+  date: '2022-7-29'
+  link: https://doi.org/gsvf5z
+  plugin: orcid.py
+  file: orcid.yaml
+- id: doi:10.1101/2023.10.11.560955
+  title: Commensalism of quasi-coherent noise-like and conventional soliton pulse in a simplified NPE mode-locked fiber laser
+  image: "/images/background1.jpg"
+  authors:
+  - Renlai Zhou et al
+  publisher: Optical Communications and Networks
+  date: '2019-7-8'
+  link: https://doi.org/gsvf5z
+  plugin: orcid.py
+  file: orcid.yaml
+- id: doi:10.1101/2023.10.11.560955
+  title: Commensalism of quasi-coherent noise-like and conventional soliton pulse in a simplified NPE mode-locked fiber laser
+  image: "/images/background1.jpg"
+  authors:
+  - Renlai Zhou et al
+  publisher: Optical Communications and Networks
+  date: '2018-6-5'
+  link: https://doi.org/gsvf5z
+  plugin: orcid.py
+  file: orcid.yaml

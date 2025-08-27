@@ -1,0 +1,19 @@
+principal-investigator:
+  en: Principal Investigator
+  zh: 首席研究员
+postdoc:
+  en: Postdoctoral Researcher
+  zh: 博士后
+phd-student:
+  en: PhD Student
+  zh: 博士生
+master-student:
+  en: Master Student
+  zh: 硕士生
+international-student:
+  en: International Student
+  zh: 国际学生
+graduate:
+  en: Graduate
+  zh: 毕业生
+

@@ -1,0 +1,8 @@
+{% assign current_lang = page.lang | default: "en" %}
+
+<div class="language-switcher">
+  <a href="/zh/" class="{% if current_lang == 'zh' %}active{% endif %}">中</a>
+  <span>|</span>
+  <a href="/en/" class="{% if current_lang == 'en' %}active{% endif %}">EN</a>
+</div>
+

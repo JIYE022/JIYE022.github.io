@@ -1,0 +1,53 @@
+{% if include.lookup %}
+  {% assign member = site.members 
+    | where_exp: "m", "m.slug == include.lookup and m.lang == page.lang"
+    | first
+  %}
+{% else %}
+  {% assign member = include %}
+{% endif %}
+
+{% assign type = site.data.types[member.role] %}
+
+<div class="portrait-wrapper">
+  <a
+    {% if page.slug != member.slug and member.url %}
+      href="{{ member.url | relative_url | uri_escape }}"
+    {% endif %}
+    class="portrait"
+    data-style="{{ include.style | default: 'default' }}"
+    aria-label="{{ member.name[page.lang] | default: member.name | default: 'member' | regex_strip }}"
+  >
+    {% if type %}
+      {% include icon.html icon=type.icon %}
+    {% endif %}
+
+    {% if member.image %}
+      <img
+        src="{{ member.image | relative_url | uri_escape }}"
+        class="portrait-image"
+        alt="portrait of {{ member.name[page.lang] | default: member.name | default: 'unknown' }}"
+        loading="lazy"
+        {% include fallback.html %}
+      >
+    {% endif %}
+
+    {% if member.name %}
+      <span class="portrait-name">
+        {{ member.name[page.lang] | default: member.name | default: 'Unknown' | regex_strip }}
+      </span>
+    {% endif %}
+
+    {% if member.description or type %}
+      <span class="portrait-description">
+        {{ member.description[page.lang] | default: member.description | default: type.description | default: '' }}
+      </span>
+    {% endif %}
+
+    {% if member.affiliation %}
+      <span class="portrait-affiliation">
+        {{ member.affiliation[page.lang] | default: member.affiliation | default: '' }}
+      </span>
+    {% endif %}
+  </a>
+</div>

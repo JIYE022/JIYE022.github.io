@@ -1,0 +1,55 @@
+{% assign emptyarray = "" | split: "," %}
+
+{%- comment -%}
+  按页面语言过滤成员
+{%- endcomment -%}
+{% assign current_lang = page.lang %}
+{% assign data = site.data.members
+  | where_exp: "m", "m.lang == current_lang"
+  | default: emptyarray
+  | data_filter: include.filter
+%}
+
+{%- comment -%}
+  分组：根据成员 role
+  role 对应中英文标题由 _data/roles.yaml 提供
+{%- endcomment -%}
+
+{% if include.order %}
+  {% assign order = include.order | split: "," %}
+  {% for r in order %}
+    {% assign group = data | where: "role", r %}
+    {% if group.size > 0 %}
+      {% assign role_label = site.data.roles[r] %}
+      <h3>
+        {% if page.lang == "zh" %}
+          {{ role_label.zh | default: r }}
+        {% else %}
+          {{ role_label.en | default: r }}
+        {% endif %}
+      </h3>
+      <div class="team-group">
+        {% for d in group %}
+          {% include portrait.html lookup=d.slug style="default" %}
+        {% endfor %}
+      </div>
+    {% endif %}
+  {% endfor %}
+{% else %}
+  {% assign groups = data | group_by: "role" %}
+  {% for group in groups %}
+    {% assign role_label = site.data.roles[group.name] %}
+    <h3>
+      {% if page.lang == "zh" %}
+        {{ role_label.zh | default: group.name }}
+      {% else %}
+        {{ role_label.en | default: group.name }}
+      {% endif %}
+    </h3>
+    <div class="team-group">
+      {% for d in group.items %}
+        {% include portrait.html lookup=d.slug style="default" %}
+      {% endfor %}
+    </div>
+  {% endfor %}
+{% endif %}

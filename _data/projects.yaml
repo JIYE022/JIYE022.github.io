@@ -1,0 +1,39 @@
+- title: 
+     en: project1
+     zh: 项目一
+  subtitle: 
+  group: featured
+  image: images/background1.jpg
+  link: /en/projects/project1
+  description: 
+     en: Dynamics evolution and regulation of multi-color soliton molecules under high-order dispersion management
+     zh: 高阶色散管理下多色孤子分子的动力学演化与调控
+ # repo: yuanmahuobiedelianjie
+  tags:
+    - reseach
+    - publication
+
+- title:
+     en: project2
+     zh: 项目二
+  subtitle: 
+  group: featured
+  image: images/background1.jpg
+  description:
+     en: Heilongjiang Provincial Natural Science Foundation, fully polarization maintaining femtosecond dual comb fiber laser with additional phase bias and its dynamic characteristics
+     zh: 黑龙江省自然科学基金，具有额外相位偏差的全极化保持飞秒双梳光纤激光器及其动态特性
+  tags:
+    - software
+
+- title:
+     en: project3
+     zh: 项目三
+  subtitle: 
+  image: images/background1.jpg
+  description:
+     en: National Natural Science Foundation of China Youth Project, Research on Long Pulse Pumped Mid Infrared Supercontinuum Spectrum Based on Weak CW Light Control, 2019/01-2022/12, Hosted;
+     zh: 中国国家自然科学基金青年项目，基于弱连续波光控制的长脉冲泵浦中红外超连续谱研究，2019年1月-2022年12月，主持；
+  tags:
+    - reseach
+    
+
