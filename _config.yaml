@@ -72,6 +72,7 @@ theme: null
 sass:
   sass_dir: _styles
 
+url: "https://jiye022.github.io"
 baseurl: "" 
 
 # force jekyll to include certain files/folders
