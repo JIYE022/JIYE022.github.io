@@ -145,7 +145,7 @@ PLATFORMS
 
 DEPENDENCIES
   html-proofer (~> 5.0)
-  jekyll (~> 4.3)
+  jekyll (~> 4.3.2)
   jekyll-feed
   jekyll-last-modified-at
   jekyll-redirect-from
